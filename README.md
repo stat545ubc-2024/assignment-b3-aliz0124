@@ -1,6 +1,7 @@
 # Caffeine in Drinks Shiny App
 
 ## Link to the app
+https://aliz0124.shinyapps.io/assignment-b3-aliz0124/
 
 ## Description and Source
 This is an R-based Shiny app for exploring the caffeine content in various drinks. The app allows users to filter by drink type, volume and caffeine levels, or search for individual drinks. Users can also visualize the data through an interactive bubble plot.  
@@ -16,16 +17,13 @@ This feature enables users to filter the dataset by drink type, making it easier
 ### 2. Slider to filter based on the volume (ml) or caffeine amount (mg) 
 This feature helps users filter the dataset for drinks that meet their specific preferences or needs, such as finding drinks with high caffeine content or within a specific volume range.
 
-### 3. Text box for searching specific drinks by name
-This feature enables users to filter for specific drinks within the dataset if they are unfamiliar with its other parameters such as type or volume.
-
-### 4. Button to download the filtered data as a CSV
+### 3. Button to download the filtered data as a CSV
 This feature is useful for users who want to save their filtered data for further analysis outside of the app, or share it with others.
 
-### 5. Interactive data table 
-An interactive table feature allows users to further explore their filtered data by sorting individual variables in ascending or descending order, or searching for included drinks.
+### 4. Interactive data table 
+An interactive table feature allows users to further explore their filtered data by sorting individual variables in ascending or descending order, or searching within filtered drinks.
 
-### 6. Interactive bubble plot (Caffeine vs Volume with bubble size = calories).
+### 5. Interactive bubble plot (Caffeine vs Volume with bubble size = calories).
 This plot provides an accessible overview of how different drinks compare in terms of caffeine amount and volume, allowing users to visually spot trends in their filtered data. Using Plotly's interactive features enables users to hover over individual points to view information, isolate specific drink types, save the plot and more.
 
 
