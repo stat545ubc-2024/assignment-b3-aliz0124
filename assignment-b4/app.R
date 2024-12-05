@@ -52,11 +52,13 @@ server <- function(input, output, session) {
 
     for (i in 1:input$num_groups) {
 
+      # Save group name as an object for labelling below
+      group_name <- str_c("Group ", i)
+
     # Create a wellPanel for each group with input fields
       group_inputs[[i]] <- wellPanel(
 
-        # Save group name as an object for labelling below
-        group_name <- str_c("Group ", i),
+
 
         # Create a header for each group using group_name
         h4(group_name),
@@ -167,7 +169,7 @@ server <- function(input, output, session) {
       str_c(input$plot_title, ".png")
     },
     content = function(file) {
-      
+
       # The code inputs an error when using ggsave() to save the plot and risk table together if that option is selected. An alternative method was used instead to avoid this.
       png(file, width = 8, height = 6, units = "in", res = 300)
       print(plot_reactive())
