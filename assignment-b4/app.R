@@ -19,18 +19,26 @@ ui <- fluidPage(
     sidebarPanel(
 
       # Feature 1: Dynamic UI for number of groups. This feature makes it easier for users to paste different subgroups, with the app changing the number of input boxes based on the slider.
+      h3("1. Select number of groups"),
       sliderInput("num_groups", "Number of groups", min = 1, max = 5, value = 2),
+
+      h3("2. Input your time-to-event and censor data"),
+      h5("Please enter one value per row for both."),
       uiOutput("group_inputs"),
 
       # Feature 2: Plot customization options. This feature allows users to fully customize their plot through adding or removing confidence intervals, calculating a p-value if >1 group, including a risk table or giving the plot a title.
+      h3("3. Customize plot features"),
       checkboxInput("show_ci", "Show Confidence Intervals", TRUE),
       checkboxInput("show_pval", "Show p-value (log rank test)", FALSE),
       checkboxInput("show_risk_table", "Show Risk Table", TRUE),
       textInput("plot_title", "Plot Title", "Survival Plot"),
       selectInput("time_unit", "Unit of Time (x-axis)", choices = c("Days", "Months", "Years"), selected = "Months"),
 
+
+      h3("4. Generate your plot"),
       actionButton("generate_plot", "Generate Plot"),
-      downloadButton("download_plot", "Download Plot as .png")
+      h3("5. Download plot as PNG"),
+      downloadButton("download_plot", "Download as .png")
     ),
 
     mainPanel(
@@ -57,7 +65,6 @@ server <- function(input, output, session) {
 
     # Create a wellPanel for each group with input fields
       group_inputs[[i]] <- wellPanel(
-
 
 
         # Create a header for each group using group_name
