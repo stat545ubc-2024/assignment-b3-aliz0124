@@ -71,6 +71,11 @@ https://aliz0124.shinyapps.io/assignment-b4/
 0
 0
 1
+0
+1
+0
+0
+0
 ```
 
 **Group 2 time-to-event**
