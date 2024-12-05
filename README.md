@@ -1,11 +1,11 @@
-# Assignment B3 and B4 Apps
+# STAT545B Assignment B3 and B4 Apps
 
-# B4 - Survival Plot Maker: Customizable Survival Analysis Graphs
+# B4 New App - Survival Plot Maker: Customizable Survival Analysis Graphs
 
-## Description
-This idea behind this Shiny app was to make survival analysis accessible to a wider audience, including users with little to no coding experience. Instead of relying on expensive software or learning statistical programming (which may be difficult for some), users can easily generate fully customizable and downloadable survival plots. This tool is particularly useful for researchers, clinicians, and students who may need quick visualizations of their data as they explore potentially interesting trends within it, or need a quick plot for a presentation or meeting.  
+## Background
+The idea behind this Shiny app was to *make survival analysis visualization accessible to a wider audience*, including users with little to no coding experience. Instead of relying on expensive software or learning statistical programming (which may be difficult for some), users can easily generate fully customizable and downloadable survival plots. This app could be useful for researchers, clinicians, and students who may need quick visualizations of their data as they explore interesting trends, or need a quick plot for a presentation or meeting.  
 
-The app format was designed to be user-friendly. Users can simply filter specific groups within their dataset, paste the values into the app, and generate a professional-quality plot.
+The app format was designed to be user-friendly. Users can simply filter for specific groups within their dataset, paste the values into the app, and generate a professional-quality plot to view or download.
 
 ## Link to the app
 https://aliz0124.shinyapps.io/assignment-b4/
