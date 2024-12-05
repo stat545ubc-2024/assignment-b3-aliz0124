@@ -1,3 +1,4 @@
+# Install the required packages before loading
 library(shiny)
 library(survival)
 library(survminer)
@@ -5,7 +6,7 @@ library(tidyverse)
 library(shinythemes)
 
 
-# Define UI
+# UI
 ui <- fluidPage(
 
   # Theme
@@ -40,29 +41,32 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic
+# Server
 server <- function(input, output, session) {
 
-  # Dynamically generate input fields for each group
+  # Dynamically generate input fields for each group based on the number selected
   output$group_inputs <- renderUI({
 
-    # Create an empty list to fill in as we iterate through the group numbers
+    # Create an empty list to store input elements in as we iterate through the group numbers
     group_inputs <- list()
 
     for (i in 1:input$num_groups) {
 
+    # Create a wellPanel for each group with input fields
       group_inputs[[i]] <- wellPanel(
 
-        # Save group name as a header
+        # Save group name as an object for labelling below
         group_name <- str_c("Group ", i),
 
-        # Create a header for group number
+        # Create a header for each group using group_name
         h4(group_name),
 
-        # Create and label text box to input group name, with "Group i" as the preset value
+        # Create and label text box for the user to name the group, with "Group i" as the default value
+        # Input ID is saved as "group_name_i"
         textInput(str_c("group_name_", i), label = str_c(group_name, " Name"), value = group_name),
 
-        # Create and label text boxes to input time-to-event and censoring data, with helpful placeholder comments
+        # Create text boxes to input time-to-event and censoring data, with helpful placeholder comments for inputting data
+        # Input IDs are saved as "time_i" for time-to-event boxes and "censor_i" for censor data boxes
         textAreaInput(str_c("time_", i), label = str_c("Time-to-event Data for ", group_name), rows = 10, placeholder = "Enter one time value per row"),
         textAreaInput(str_c("censor_", i), label = str_c("Censoring Data for ", group_name), rows = 10, placeholder = "Enter one censor value per row (0 = censored, 1 = event)")
       )
@@ -79,7 +83,7 @@ server <- function(input, output, session) {
 
     # Collect and process time-to-event data for each group
     for (i in 1:input$num_groups) {
-      time_data <- input[[str_c("time_", i)]] %>% # Retrieve the input based on the dynamic group inputs created above. Ex: "time_1", "time_2"
+      time_data <- input[[str_c("time_", i)]] %>% # Retrieve the input based on the dynamic group input IDs created above. Ex: "time_1", "time_2"
         str_split("\n") %>%  # Split the string by newline
         unlist() %>%        # Convert from a list into a numeric vector
         as.numeric()
@@ -108,10 +112,9 @@ server <- function(input, output, session) {
     return(combined_data)
   })
 
-  # Feature 3: Survival curve. After inputting their data and customizing fields, the Shiny App generates a customized survival plot with added features and a colorblind friendly palette to view or download.
-  # Generate the initial survival plot after the user clicks the button
+  # Feature 3: Survival curve. After inputting their data and customizing fields, the Shiny App generates a customized survival plot with added features and a colorblind-friendly palette to view or download.
   plot_reactive <- reactive({
-    # Require the user to click the "generate plot" button before creating it
+    # Require the user to click the "generate plot" button before generating the initial plot
     req(input$generate_plot)
 
     # Save the survival_data reactive function in an object that is easier to work with
@@ -153,9 +156,9 @@ server <- function(input, output, session) {
     )
   })
 
-  # Render the plot
+  # Render and display the plot
   output$surv_plot <- renderPlot({
-    plot_reactive() # Display the survival plot
+    plot_reactive()
   })
 
   # Download the plot as .png
@@ -164,7 +167,8 @@ server <- function(input, output, session) {
       str_c(input$plot_title, ".png")
     },
     content = function(file) {
-      # Issues with using ggsave to save the plot and risk table together if selected. An alternative method was used instead
+      
+      # The code inputs an error when using ggsave() to save the plot and risk table together if that option is selected. An alternative method was used instead to avoid this.
       png(file, width = 8, height = 6, units = "in", res = 300)
       print(plot_reactive())
       dev.off()
