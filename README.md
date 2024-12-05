@@ -12,9 +12,9 @@ https://aliz0124.shinyapps.io/assignment-b4/
 
 ## Instructions and Sample Data
 
-*Instructions*
-1. Use the slider to select the number of groups in your data to plot.
-2. Input your group name, and paste your time-to-event and censor data directly from your data file. Please note the formatting requirements.
+*Quick Instructions (refer to the "features" heading below for more details)*
+1. Use the slider to select the number of subgroups in your data to plot.
+2. Input your group name, and paste your time-to-event and censor data directly from your data file. Please note the formatting requirements described in the app.
 3. Select plot customizations and add a title
 4. Press the generate plot button, and you're done!
 
@@ -193,7 +193,9 @@ https://aliz0124.shinyapps.io/assignment-b4/
 ## Features
 
 ### 1. Dynamic input fields for groups
-This feature allows users to to define the number of groups they want to analyze using a slider. Based on the input, the app dynamically generates input boxes for time-to-event data, censoring data, and group names, allowing for analysis between subgroups. The number of groups were kept to a maximum of 5 based on existing Kaplan-Meier survival calculation tools and typical practice, where we only see 2-5 subgroups within a single plot. This maintains clarity and makes the plot easier to interpret.
+This feature allows users to to define the number of groups they want to analyze using a slider. Based on the input, the app dynamically generates input boxes for time-to-event data, censoring data, and group names, allowing for analysis between subgroups. 
+
+The number of groups were kept to a maximum of 5 based on existing Kaplan-Meier survival calculation tools and typical practice, where we only see 2-5 subgroups within a single plot. This maintains clarity and makes the plot easier to interpret.
 
 ### 2. Customize plot options
 This feature allows users to fully customize their plot with features like confidence intervals, displaying a p-value using the log rank test if >1 group is inputted, and risk tables.
